@@ -1,0 +1,230 @@
+// Generated from steal.g4 by ANTLR 4.8
+
+// actually renamed ABBstealBaseListener to avoid it is automatically overwritten from a call to antlr4
+// IF the grammar changes then antlr4 has to be re-run and THIS file and stealBasedListener.java (with possibly
+// new/different methods to be overridden!) must be merged.
+
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.ErrorNode;
+import org.antlr.v4.runtime.tree.TerminalNode;
+
+/**
+ * This class provides an empty implementation of {@link stealListener},
+ * which can be extended to create a listener which only needs to handle a subset
+ * of the available methods.
+ */
+public class ABB__stealBaseListener implements stealListener {
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExp_noc(stealParser.Exp_nocContext ctx) {
+
+	    // INTEGERZ are read directly! no- production so far.
+
+
+	    if (ctx.getChild(0).getText().equals("(")){             // Nota questo deve essere l'unico caso che identifica (exp OP exp), 
+		                                                    // unico che trasforma ( in [
+		System.out.print("[");                              // NOTA anche qui mancano le virgole !!!
+	    } else if (ctx.getChild(0).getText().equals("not (")){
+		System.out.print("'not', [");
+	     } else if  (ctx.getChild(0).getText().equals("tx(")){
+		System.out.print("[ 'tx', '"+ctx.getChild(1).getText()+"', '"+ctx.getChild(3).getText()+"']");
+	    } else if  (ctx.getChild(0).getText().equals("txlen")){
+		System.out.print("[ 'txlen' ] ");	
+	    } else if  (ctx.getChild(0).getText().equals("txid(")){
+		System.out.print("[ 'txid', '"+ctx.getChild(1).getText()+"']");
+	    } else if  (ctx.getChild(0).getText().equals("txpos")){
+		System.out.print("[ 'txpos' ]");
+	    } else if  (ctx.getChild(0).getText().equals("arg(")){
+		System.out.print("[ 'arg', '"+ctx.getChild(1).getText()+"']");
+	    } else if  (ctx.getChild(0).getText().equals("arglen")){
+		System.out.print("[ 'arglen' ]");
+	    } else if  (ctx.getChild(0).getText().equals("H(")){
+		System.out.print("[ 'H', ");
+	    } else if  (ctx.getChild(0).getText().equals("verisig(")){
+		System.out.print("[ 'verisig', ");              
+	    }
+	}
+	
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExp_noc(stealParser.Exp_nocContext ctx) { 
+
+	    if (ctx.getChild(0).getText().equals("(") ||
+		ctx.getChild(0).getText().equals("not (") ||
+		ctx.getChild(0).getText().equals("H(") ||
+		ctx.getChild(0).getText().equals("verisig(")
+		){
+		System.out.print("]");
+	    }
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExp_c(stealParser.Exp_cContext ctx) {  
+
+	    // Enter as enterExp_noc
+
+
+	    if (ctx.getChild(0).getText().equals("(")){             // Nota questo deve essere l'unico caso che identifica (exp OP exp), 
+		                                                    // unico che trasforma ( in [
+		System.out.print("[");                              // NOTA anche qui mancano le virgole !!!
+	    } else if (ctx.getChild(0).getText().equals("not (")){
+		System.out.print("'not', [");
+	     } else if  (ctx.getChild(0).getText().equals("tx(")){
+		System.out.print("[ 'tx', '"+ctx.getChild(1).getText()+"', '"+ctx.getChild(3).getText()+"'],");
+	    } else if  (ctx.getChild(0).getText().equals("txlen")){
+		System.out.print("[ 'txlen' ],");	
+	    } else if  (ctx.getChild(0).getText().equals("txid(")){
+		System.out.print("[ 'txid', '"+ctx.getChild(1).getText()+"'],");
+	    } else if  (ctx.getChild(0).getText().equals("txpos")){
+		System.out.print("[ 'txpos' ]");
+	    } else if  (ctx.getChild(0).getText().equals("arg(")){
+		System.out.print("[ 'arg', '"+ctx.getChild(1).getText()+"'],");
+	    } else if  (ctx.getChild(0).getText().equals("arglen")){
+		System.out.print("[ 'arglen' ]");
+	    } else if  (ctx.getChild(0).getText().equals("H(")){
+		System.out.print("[ 'H', ");
+	    } else if  (ctx.getChild(0).getText().equals("verisig(")){
+		System.out.print("[ 'verisig', ");                       
+	    }  	    
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExp_c(stealParser.Exp_cContext ctx) { 
+
+	    if (ctx.getChild(0).getText().equals("(") ||
+		ctx.getChild(0).getText().equals("not (") ||
+		ctx.getChild(0).getText().equals("H(") ||
+		ctx.getChild(0).getText().equals("verisig(")
+		){
+		System.out.print("], ");
+	    }
+	}
+
+
+
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVal(stealParser.ValContext ctx) {
+	    if (ctx.getChild(0).getText().equals("byte base64 ")) 
+		System.out.print("['byte base64', "+"'"+ctx.getChild(1).getText()+"']");
+		else
+		    System.out.print("['"+ctx.getChild(0).getText().replaceAll("\\s", "")+"', "+"'"+ctx.getChild(1).getText()+"']");
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVal(stealParser.ValContext ctx) {
+	    
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIntegerz(stealParser.IntegerzContext ctx) { 
+	    // System.out.print("'"+ctx.getText()+"'");
+
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIntegerz(stealParser.IntegerzContext ctx) { }
+
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOp(stealParser.OpContext ctx) { 
+		System.out.print("'"+ctx.getText().replaceAll("\\s", "")+"', ");
+	}
+
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOp(stealParser.OpContext ctx) {
+	    }
+
+
+
+
+
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEveryRule(ParserRuleContext ctx) { }
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEveryRule(ParserRuleContext ctx) { }
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void visitTerminal(TerminalNode node) { }
+
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void visitErrorNode(ErrorNode node) { }
+}

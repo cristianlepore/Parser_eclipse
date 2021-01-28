@@ -1,0 +1,1 @@
+((tx(0).type = int close) and (((tx(0).fv > int 3000) and (tx(0).crcv = addr A)) or (((arg(0) = byte-base64 0) and (versig(arg(0),arg(1),addr O) and (tx(0).crcv = addr A))) or ((arg(0) = byte-base64 1) and (versig(arg(0),arg(1),addr O) and (tx(0).crcv = addr B))))))
